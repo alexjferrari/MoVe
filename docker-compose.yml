@@ -1,0 +1,31 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:15
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: move_db
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - '5432:5432'
+
+  app:
+    build: .
+    command: sh -c "npm run migrate && npm run seed && npm run dev"
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - '4000:4000'
+    environment:
+      NODE_ENV: development
+      DATABASE_URL: ${DATABASE_URL}
+      JWT_SECRET: ${JWT_SECRET}
+    depends_on:
+      - db
+
+volumes:
+  db_data:
