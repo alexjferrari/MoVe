@@ -3,18 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-  "dev": "nodemon --watch src --ext js --exec \"node src/index.js\""
-}
-    "dependencies": {
-    "bcrypt": "^5.1.0",
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.0",
+    "dev": "nodemon --watch src --ext js --exec \"node src/index.js\"",
+    "start": "node src/index.js",
+    "migrate": "prisma migrate deploy",
+    "migrate:dev": "prisma migrate dev --name init",
+    "seed": "node prisma/seed.js"
+  },
+  "dependencies": {
     "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.0",
-    "prisma": "^5.0.0",
     "@prisma/client": "^5.0.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "nodemon": "^2.0.22",
+    "prisma": "^5.0.0"
   }
 }
