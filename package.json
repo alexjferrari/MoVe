@@ -3,13 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "nodemon --watch src -e js --exec node src/index.js",
-    "start": "node src/index.js",
-    "migrate": "prisma migrate deploy",
-    "migrate:dev": "prisma migrate dev --name init",
-    "seed": "node prisma/seed.js"
-  },
-  "dependencies": {
+  "dev": "nodemon --watch src --ext js --exec \"node src/index.js\""
+}
+    "dependencies": {
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
